@@ -1,0 +1,4 @@
+C:\Users\apiadmin\Desktop\Regex\RegexX\RegexX\bin\Debug\RegexX.exe
+C:\Users\apiadmin\Desktop\Regex\RegexX\RegexX\bin\Debug\RegexX.pdb
+C:\Users\apiadmin\Desktop\Regex\RegexX\RegexX\obj\Debug\RegexX.exe
+C:\Users\apiadmin\Desktop\Regex\RegexX\RegexX\obj\Debug\RegexX.pdb
