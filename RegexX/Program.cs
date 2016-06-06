@@ -10,6 +10,7 @@ namespace RegexX
     {
         static void Main(string[] args)
         {
+            //Check for commit
             var pattern = args[0];
             var matter = args[1];
             var regex = new Regex(pattern);
