@@ -14,7 +14,30 @@ namespace RegexX
             checkForBeginningOfLine();
             checkForIgnoringSpecialCharacters();
             checkForLetters();
+            checkForALetter();
+            optimizedCheckForALetter();
             Console.ReadLine();
+        }
+
+        private static void optimizedCheckForALetter()
+        {
+            // Let's optimize the search
+            var pattern = "[^x\n]*x";
+            var matter =
+                "xcvbnmkjhgfbjytfvbnjuytbnjuytfgbnjuytfvbnjuytfvbnjuytfvbnjuytfvbnjuytgbnjuytfbnjuytfvbnjuytgbnjuytfg";
+            var message = "Optimized search";
+            checkForSuccess(pattern, matter, message);
+        }
+
+        private static void checkForALetter()
+        {
+            // . Matches any character
+            // * Matches multiple instances
+            var pattern = ".*x";
+            var matter = "xzcvbgfsertghytfdertghjuytfdertghytrdewrtuytfdertyjuytgfrtyhjuytgfrtyhytfrethjuygfrtyhjuygfrtyjuyt";
+            var message = "Checking For a letter";
+            checkForSuccess(pattern, matter, message);
+
         }
 
         private static void checkForLetters()
@@ -23,11 +46,13 @@ namespace RegexX
             // \B is the opposite of \b
             var pattern = "\\b";
             var matter = "I love French Fries!";
+            var count = matter.Length;
+            Console.WriteLine($"Length of Testing string is {count}");
             var message = @"Testing \b";
-            CheckForMultipleSuccess(pattern, matter, message);
+            checkForMultipleSuccess(pattern, matter, message);
         }
 
-        private static void CheckForMultipleSuccess(string pattern, string matter, string message)
+        private static void checkForMultipleSuccess(string pattern, string matter, string message)
         {
             var regex = new Regex(pattern);
             var match = regex.Match(matter);
