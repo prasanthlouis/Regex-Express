@@ -16,7 +16,31 @@ namespace RegexX
             checkForLetters();
             checkForALetter();
             optimizedCheckForALetter();
+            checkForWhiteSpaceAndEndCharacters();
+            atomicGroup();
             Console.ReadLine();
+        }
+
+        private static void atomicGroup()
+        {
+            // ?> denotes the atomic group. They do not backtrack so be careful.
+            var pattern = "(?>(fishy\\s)+)(fishy\\s)!$";
+            var matter = "fishy fishy fishy fishy !";
+            var message = "We can't find Dory";
+            checkForSuccess(pattern, matter, message);
+            message = "WE FOUND DORY!";
+            pattern = "((fishy\\s)+)(fishy\\s)!$";
+            checkForSuccess(pattern,matter,message);
+
+        }
+
+        private static void checkForWhiteSpaceAndEndCharacters()
+        {
+            // \s is for whitespace and $ is for end of the string
+            var pattern = "((pizza\\s)+)((fries\\s)+)!$";
+            var matter = "pizza pizza pizza fries fries fries !";
+            var message = "We love food";
+            checkForSuccess(pattern, matter, message);
         }
 
         private static void optimizedCheckForALetter()
@@ -103,6 +127,10 @@ namespace RegexX
             if(match.Success)
             {
                 Console.WriteLine($"{message} - Match is found at {match.Index} and is {match.Length} long");
+            }
+            else
+            {
+                Console.WriteLine($"{message} - Match wasn't found");
             }
         }
     }
